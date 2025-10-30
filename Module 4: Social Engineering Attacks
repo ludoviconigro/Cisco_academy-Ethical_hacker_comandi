@@ -1,0 +1,33 @@
+BeEF (Browser Exploitation Framework) — Panoramica (materiale didattico)
+
+Descrizione:
+BeEF è un framework usato in contesti di ricerca e formazione per dimostrare come vulnerabilità web (es. Cross-Site Scripting) possano essere sfruttate per ottenere controllo limitato sui browser degli utenti. Questo documento riassume a livello concettuale gli elementi mostrati nelle slide/screenshot del corso.
+
+Sezioni mostrate:
+- Launching BeEF
+  Concetto: il framework espone una console web di gestione; da qui l'operatore può visualizzare browser "hooked" e lanciare moduli.
+- Stealing a Browser Cookie
+  Concetto: dimostrazione di come informazioni del browser (compresi cookie di sessione, se accessibili) possano essere raccolte da un modulo.
+- Sending a Fake Notification
+  Concetto: uso di moduli di social engineering per inviare notifiche o messaggi che compaiono nell'interfaccia del browser.
+- Fake Notification in Browser
+  Concetto: esempio visivo di una notifica falsa mostrata all'utente (es. "Authentication Expired! Please login at ...").
+
+Aspetti etici e operativi:
+- Queste tecniche vanno studiate solo in ambiente autorizzato e isolato (lab/VM) e per scopi di difesa o apprendimento.
+- Non eseguire test senza esplicita autorizzazione del proprietario del sistema.
+
+Mitigazioni consigliate:
+- Sanificazione e validazione degli input per prevenire XSS.
+- Impostare intestazioni HTTP di sicurezza (Content-Security-Policy, X-Frame-Options, ecc.).
+- Usare cookie con flag HttpOnly, Secure e SameSite.
+- Tenere browser e plugin aggiornati; limitare l'esecuzione di JavaScript non necessario.
+- Monitorare log e traffico per attività anomale (inclusi script caricati da domini esterni).
+
+Risorse per approfondire (uso legale e didattico):
+- Documentazione ufficiale dell'applicazione o del framework usato (consultare fonti ufficiali del framework).
+- Materiali del corso Cisco Networking Academy per contesto e teoria.
+- Guide su XSS e mitigazioni (documentazione OWASP per approfondimenti tecnici e difensivi).
+
+Nota:
+Questo documento è descrittivo e didattico. Non contiene comandi o istruzioni operative per eseguire attacchi.
